@@ -1,0 +1,69 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "physical_description",
+    "expression": "grel:value.match(/(.*)(\\d+\\.\\d+X\\d+.\\d+).*/)[1]",
+    "onError": "set-to-blank",
+    "newColumnName": "menu_dimensions",
+    "columnInsertIndex": 8,
+    "description": "Create column menu_dimensions at index 8 based on column physical_description using expression grel:value.match(/(.*)(\\d+\\.\\d+X\\d+.\\d+).*/)[1]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "physical_description",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "physical_description_copy",
+    "columnInsertIndex": 8,
+    "description": "Create column physical_description_copy at index 8 based on column physical_description using expression grel:value"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "physical_description_copy",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": ";",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column physical_description_copy by separator"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "date",
+    "expression": "grel:value.toDate()",
+    "onError": "set-to-blank",
+    "newColumnName": "date_clean",
+    "columnInsertIndex": 22,
+    "description": "Create column date_clean at index 22 based on column date using expression grel:value.toDate()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "date_clean",
+    "expression": "grel:if(or(toDate(value).datePart(\"years\")<1851,toDate(value).datePart(\"years\")>2012),'',value)",
+    "onError": "set-to-blank",
+    "newColumnName": "date_clean2",
+    "columnInsertIndex": 23,
+    "description": "Create column date_clean2 at index 23 based on column date_clean using expression grel:if(or(toDate(value).datePart(\"years\")<1851,toDate(value).datePart(\"years\")>2012),'',value)"
+  }
+]
