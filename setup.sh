@@ -10,18 +10,18 @@
 #     @in path
 
 
-# which -s brew
-# if [[ $? != 0 ]] ; then
-#     # Install Homebrew
-#     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# else
-#     brew update
-# fi
+which -s brew
+if [[ $? != 0 ]] ; then
+    # Install Homebrew
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    echo "Please wait (homebrew update) ^c to skip.."
+    brew update --verbose
+fi
 
-command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew..."; \
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
-echo "Please wait (homebrew update) ^c to skip.."
-brew update --verbose
+#command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew..."; \
+#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+#brew update
 
 #     @end Check_Homebrew
 
