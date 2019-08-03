@@ -60,7 +60,7 @@ The [New York Public Library](http://menus.nypl.org/about) has collected informa
 
 An initial bootstrap `setup.sh` is included as convenience to bootstrap the environment on OSX. The following operations are conducted in order to provide the basic structure to replicate this report. Included checks for other packages such as GraphViz and LibrSVG for easy document reproducibility.
 
-![](svg/setup.svg)
+![](svg/setup.png)
 
 
 
@@ -145,7 +145,7 @@ $ vi  /Applications/OpenRefine.app/Contents/Info.plist
 The created at and updated at columns were cleaned as date column of Menu file.
 
 
-- **Dish** -
+- **Dish** - name was the most difficult column to perform operations on - I switched to python notebook to perform some clustering.
 
 
 
@@ -161,9 +161,7 @@ Attempts to cluster the data appropriately were taken, however without more deta
 
 ### Clustering Challenges wihtin OpenRefine
 
-The `dish` table has presented some challenges to OpenRefine for clustering because of the number of records and limitations to CPU.
-
-
+The `dish` table has presented some challenges to OpenRefine for clustering because of the number of records and limitations to CPU.  Similar operations were performed within the python notebook for clustering.
 
 
 # Develop a relational database schema
@@ -485,7 +483,7 @@ File images/menupage.yw.png generated.
 ```
 
 - **dish**  
-	See the attached [notebook container](python/NYPL_MENUS.ipynb) that demonstrates basic operations on the `dish` table.  The values for the name were too large for OpenRefine for my machine - so I had to try another route.
+	See the attached [notebook container python/NYPL_MENUS.ipynb](python/NYPL_MENUS.ipynb) that demonstrates basic operations on the `dish` table.  The values for the name were too large for OpenRefine for my machine - so I had to try another route.
 
 - **menuitem**  
 	![](images/menuitem.yw.png)
